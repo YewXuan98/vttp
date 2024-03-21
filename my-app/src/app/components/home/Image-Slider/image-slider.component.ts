@@ -1,12 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { config } from '../../../configurations/local';
+import { Carousel } from '../../../configurations/models';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-image-slider',
-  standalone: true,
-  imports: [],
   templateUrl: './image-slider.component.html',
   styleUrl: './image-slider.component.css'
 })
-export class ImageSliderComponent {
+
+export class ImageSliderComponent implements OnInit{
+  
+  carousel !: Array<Carousel>;
+  
+  constructor(config: NgbCarouselConfig){
+    // Set interval between slides (milliseconds)
+    
+    config.interval = 5000; // Adjust as needed
+  
+    // Enable or disable wrapping of slides
+    
+    config.wrap = true; // Set to true to wrap from the last slide to the first
+  
+    // Enable or disable keyboard navigation
+    
+    config.keyboard = true; // Set to true to enable keyboard navigation
+  }
+
+
+   
+  ngOnInit(): void {
+    this.carousel = config.carousel
+  }
 
 }
+ 

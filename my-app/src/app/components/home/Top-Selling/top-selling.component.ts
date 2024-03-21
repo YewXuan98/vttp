@@ -1,12 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../store/app.reducers';
+import * as ShowcaseActions from '../../store/showcase/showcase.actions';
+import { ShowcaseState } from '../../store/showcase/showcase.reducer';
 
 @Component({
   selector: 'app-top-selling',
-  standalone: true,
-  imports: [],
   templateUrl: './top-selling.component.html',
-  styleUrl: './top-selling.component.css'
+  styleUrls: ['./top-selling.component.css']
 })
-export class TopSellingComponent {
+export class TopSellingComponent implements OnInit {
 
+  @ViewChild('mostCards') mostCards !: ElementRef;
+
+  showcaseState !: Observable<ShowcaseState>;
+
+  constructor(private store: Store<fromApp.AppState>) {
+  }
+
+  ngOnInit() {
+    this.showcaseState = this.store.select('showcase');
+    this.showcaseState
+      .pipe(take(1))
+      .subscribe(
+        data => {
+          if (data.topSelling.length === 0) {
+            this.store.dispatch(new ShowcaseActions.FetchTopSelling());
+          }
+        }
+      );
+  }
+
+  scrollLeft() {
+    this.mostCards.nativeElement.scrollLeft -= 250;
+  }
+
+  scrollRight() {
+    this.mostCards.nativeElement.scrollLeft += 250;
+  }
 }

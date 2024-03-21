@@ -1,4 +1,4 @@
-export interface Carausel {
+export interface Carousel  {
     title: string;
     text: string;
     imageUrl: string;
@@ -9,6 +9,6 @@ export interface Carausel {
     authUrl: string;
     clientId: string;
     clientSecret: string;
-    carausel: Array<Carausel>;
+    carousel: Array<Carousel>;
     bannerUrl: string;
   }
