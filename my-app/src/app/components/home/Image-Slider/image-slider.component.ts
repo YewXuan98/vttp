@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { config } from '../../../configurations/local';
 import { Carousel } from '../../../configurations/models';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarousel, NgbCarouselConfig, NgbSlide } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule, NgIf, NgStyle } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-image-slider',
   templateUrl: './image-slider.component.html',
-  styleUrl: './image-slider.component.css'
+  styleUrl: './image-slider.component.css',
+  standalone: true,
+  imports: [NgStyle, RouterLink, NgbCarousel, CommonModule, NgbSlide]
 })
 
 export class ImageSliderComponent implements OnInit{

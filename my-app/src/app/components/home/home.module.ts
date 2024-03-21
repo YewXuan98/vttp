@@ -10,21 +10,21 @@ import { NewlyAddedComponent } from './Newly-Added/newly-added.component';
 import { HomeComponent } from './home.component';
 
 
-@NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(HomeRoutes),
-    NgbModule,
-  ],
-  declarations: [
-    HomeComponent,
-    NewlyAddedComponent,
-    TopSellingComponent,
-    ImageSliderComponent,
-    BannerComponent
-  ],
-  exports: [ 
+// @NgModule({
+//   imports: [
+//     CommonModule,
+//     RouterModule.forChild(HomeRoutes),
+//     NgbModule,
+//   ],
+//   declarations: [
+//     HomeComponent,
+//     NewlyAddedComponent,
+//     TopSellingComponent,
+//     ImageSliderComponent,
+//     BannerComponent
+//   ],
+//   exports: [ 
 
-  ]
-})
-export class HomeModule { }
+//   ]
+// })
+// export class HomeModule { }
